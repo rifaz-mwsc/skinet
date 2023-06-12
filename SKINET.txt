@@ -1,0 +1,64 @@
+SKINET
+
+DOTNET WATCH COMMAND
+
+IF HTTPS IS NOT WORKING (OPEN CMD AS ADMIN)
+
+dotnet dev-certs https
+if not valid certificate is present run following comands
+dotnet dev-certs https --clean
+dotnet dev-certs https --trust
+
+
+SEE INSTALLED GLOBAL PACKAGES
+dotnet tool list -g
+
+ TO INSTALL SPECIFIC PACKAGE --> dotnet tool install --global dotnet-ef --version 6.0.2
+ TO UPDATE SPECIFIC PACKAGE --> dotnet tool UPDATE --global dotnet-ef --version 7.0.2
+
+ TO SEE THE WHAT YOU CAN DO WITH DOTNET EF ->  dotnet ef
+ TO SEE THE WHAT YOU CAN DO WITH DOTNET EF MIGRATIONS ->  dotnet ef migrations 
+
+ TO ADD MIGRATION AND GIVE A PATH FOR OUTPUT--> dotnet ef migrations add InitialCreate -o Data/Migrations
+
+ AFTER MIGRATION CREATE DATABASE --> dotnet ef database update
+
+ use SQLite plugin installed to see the db ceated.
+
+Section 2: (15)
+
+ ASYN Function: 
+ Qery Datebase:
+ dependency injection: 
+
+Run and watch changed : dotnet watch --no-hot-reload
+
+Add Two more class libraries and add to solution
+    $ dotnet new classlib -n Core
+    $ dotnet new classlib -n Infrastructure
+
+    $ dotnet sln add Core
+    $ dotnet sln add Infrastructure
+
+Add reference to API class library
+ cd into API proj and run:
+ $ dotnet add reference ../Infrastructure
+    
+Add reference to Infrastructure 
+ cd into Infrastructure proj and run:
+ $ dotnet add reference ../Core
+
+
+to link up all projects Run:
+
+$dotnet restore
+
+Refactoring :
+moving Data folder to ./Infrastructure
+moving Entities folder to ./Core
+
+Run dotnet restore & dotnet build
+
+
+
+
